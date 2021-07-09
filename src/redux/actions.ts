@@ -9,8 +9,12 @@ export interface UpdateProductAction extends Action {
 }
 
 export const updateProductActionCreator: ActionCreator<UpdateProductAction> = (
-  payload: ProductState
-) => ({
+  { currentProduct }: ProductState
+) => {
+  console.log('action dispatched ' + currentProduct)
+  return {
   type: updateProductActionType,
-  payload
-});
+  payload: {
+    currentProduct
+  }
+}};

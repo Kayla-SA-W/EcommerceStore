@@ -3,5 +3,5 @@ export interface ProductState {
 }
 
 export const defaultProductState = {
-    currentProduct: ''
+    currentProduct: undefined
 }

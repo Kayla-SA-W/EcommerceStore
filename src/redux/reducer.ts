@@ -3,10 +3,9 @@ import { UpdateProductAction, updateProductActionType } from './actions';
 import { defaultProductState, ProductState } from "./state";
 
 const updateProduct = (
-  state: ProductState,
+  _: ProductState,
   { payload }: UpdateProductAction
 ): ProductState => ({
-  ...state,
   ...payload
 });
 

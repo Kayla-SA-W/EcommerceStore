@@ -31,17 +31,23 @@ const ProductLabel = styled.div`
 
 export const ProductGrid = () => {
     const dispatch = useDispatch();
-    const onClick = () => dispatch(updateProductActionCreator('camera.jpeg'));
+    const onClick = () => dispatch(updateProductActionCreator('cream.jpeg'));
     return (
         <GridWrapper>
             <ButtonWrapper>
-                <Image src={'camera.jpeg'} onClick={onClick}/>
+                <Image src={'camera.jpeg'} onClick={() => {
+                    console.log('image clicked')
+                    onClick()
+                }}/>
                 <ProductLabel>Camera</ProductLabel>
             </ButtonWrapper>
             <ButtonWrapper
                 href='/current-product'
             >
-                <Image src={'cream.jpeg'} onClick={onClick}/>
+                <Image src={'cream.jpeg'} onClick={() => {
+                    console.log('image clicked')
+                    onClick()
+                }}/>
                 <ProductLabel>Face Cream</ProductLabel>
             </ButtonWrapper>
             <ButtonWrapper>
