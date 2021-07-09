@@ -17,7 +17,7 @@ export const Nav = () => {
 
     return(
         <NavWrapper>
-            <h2>Logo Goes Here</h2>
+            <h2>Mock Ecommerce Store</h2>
             <ButtonWrapper>
                 <img src={'shopping-cart.png'} />
             </ButtonWrapper>
