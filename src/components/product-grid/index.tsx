@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'
+import { updateProductActionCreator } from '../../redux/actions';
 import styled from 'styled-components';
 
 const GridWrapper = styled.div`
@@ -10,7 +12,7 @@ const GridWrapper = styled.div`
     margin: 0 150px;
 `;
 
-const ButtonWrapper = styled.button`
+const ButtonWrapper = styled.a`
     border: none;
     background-color: white; 
     height: inherit;
@@ -28,35 +30,39 @@ const ProductLabel = styled.div`
 `
 
 export const ProductGrid = () => {
+    const dispatch = useDispatch();
+    const onClick = () => dispatch(updateProductActionCreator('camera.jpeg'));
     return (
         <GridWrapper>
             <ButtonWrapper>
-                <Image src={'camera.jpeg'} />
+                <Image src={'camera.jpeg'} onClick={onClick}/>
                 <ProductLabel>Camera</ProductLabel>
             </ButtonWrapper>
-            <ButtonWrapper>
-                <Image src={'cream.jpeg'} />
+            <ButtonWrapper
+                href='/current-product'
+            >
+                <Image src={'cream.jpeg'} onClick={onClick}/>
                 <ProductLabel>Face Cream</ProductLabel>
             </ButtonWrapper>
             <ButtonWrapper>
-                <Image src={'googlehome.jpeg'} />
+                <Image src={'googlehome.jpeg'} onClick={onClick}/>
                 <ProductLabel>Google Home</ProductLabel>
             </ButtonWrapper>
             <ButtonWrapper>
-                <Image src={'lens.jpeg'} />
+                <Image src={'lens.jpeg'} onClick={onClick}/>
                 <ProductLabel>Camera Lens'</ProductLabel>
             </ButtonWrapper>
 
             <ButtonWrapper>
-                <Image src={'lipgloss.jpeg'} />
+                <Image src={'lipgloss.jpeg'} onClick={onClick}/>
                 <ProductLabel>Lip Gloss</ProductLabel>
             </ButtonWrapper>
             <ButtonWrapper>
-                <Image src={'oil.jpeg'} />
+                <Image src={'oil.jpeg'} onClick={onClick}/>
                 <ProductLabel>Face Oil</ProductLabel>
             </ButtonWrapper>
             <ButtonWrapper>
-                <Image src={'perfume.jpeg'} />
+                <Image src={'perfume.jpeg'} onClick={onClick}/>
                 <ProductLabel>Perfume</ProductLabel>
             </ButtonWrapper>
             <ButtonWrapper></ButtonWrapper>
