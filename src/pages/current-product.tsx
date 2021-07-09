@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { currentProductSelector } from '../redux/selectors';
 
 const Image = styled.img`
     height: 150px;
@@ -31,12 +33,13 @@ const ColorBubble = styled.div`
 
 export const DefenseBundle = () => {
     const [selectedColor, setSelectedColor] = useState('White');
+    const currentProduct = useSelector(currentProductSelector);
     return(
         <>
-            <Image src={'cream.jpeg'} alt='cream' />
+            <Image src={`${currentProduct}`} alt={currentProduct} />
             <div>
-                <ProductName>Defense Bundle - {selectedColor}</ProductName>
-                <Description> No touch door opener, scrunchie, pom pom keychain, Safe sound alarm with light, bottle opener, whistle, and landyard.  </Description>
+                <ProductName>Face Cream - {selectedColor}</ProductName>
+                <Description> Face Cream </Description>
                 <ColorBubblesWrapper>
                     <ColorBubble color={'Blue'} onClick={() => () => setSelectedColor('Blue')}/>
                     <ColorBubble color={'Black'} onClick={() => setSelectedColor('Black')}/>
