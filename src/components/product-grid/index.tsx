@@ -1,7 +1,7 @@
-import React from 'react';
-import { useDispatch } from 'react-redux'
-import { updateProductActionCreator } from '../../redux/actions';
+import React, { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components';
+import {Link} from 'gatsby'
+import { Product } from '../../context/types'
 
 const GridWrapper = styled.div`
     display: grid;
@@ -29,46 +29,62 @@ const ProductLabel = styled.div`
     justify-content: 'center';
 `
 
-export const ProductGrid = () => {
-    const dispatch = useDispatch();
-    const onClick = () => dispatch(updateProductActionCreator('cream.jpeg'));
+interface ProductGrid {
+    setProduct: Dispatch<SetStateAction<Product>>;
+}
+
+export const ProductGrid = ({setProduct}: ProductGrid) => {
+
+    const setCurrentProduct = (currentProduct: string) => {
+            setProduct((prevState: Product) => ({
+            ...prevState,
+            currentProduct
+        }))
+    }
+    
     return (
         <GridWrapper>
             <ButtonWrapper>
                 <Image src={'camera.jpeg'} onClick={() => {
-                    console.log('image clicked')
-                    onClick()
+                    setCurrentProduct('camera');
                 }}/>
                 <ProductLabel>Camera</ProductLabel>
             </ButtonWrapper>
-            <ButtonWrapper
-                href='/current-product'
-            >
+            <Link to='/current-product'>
                 <Image src={'cream.jpeg'} onClick={() => {
-                    console.log('image clicked')
-                    onClick()
+                    setCurrentProduct('cream');
                 }}/>
                 <ProductLabel>Face Cream</ProductLabel>
-            </ButtonWrapper>
+            </Link>
             <ButtonWrapper>
-                <Image src={'googlehome.jpeg'} onClick={onClick}/>
+                <Image src={'googlehome.jpeg'} onClick={() => {
+                    setCurrentProduct('googlehome');
+                }}/>
                 <ProductLabel>Google Home</ProductLabel>
             </ButtonWrapper>
             <ButtonWrapper>
-                <Image src={'lens.jpeg'} onClick={onClick}/>
+                <Image src={'lens.jpeg'} onClick={() => {
+                    setCurrentProduct('lens');
+                }}/>
                 <ProductLabel>Camera Lens'</ProductLabel>
             </ButtonWrapper>
 
             <ButtonWrapper>
-                <Image src={'lipgloss.jpeg'} onClick={onClick}/>
+                <Image src={'lipgloss.jpeg'} onClick={() => {
+                    setCurrentProduct('lipgloss');
+                }}/>
                 <ProductLabel>Lip Gloss</ProductLabel>
             </ButtonWrapper>
             <ButtonWrapper>
-                <Image src={'oil.jpeg'} onClick={onClick}/>
+                <Image src={'oil.jpeg'} onClick={() => {
+                   setCurrentProduct('oil');
+                }}/>
                 <ProductLabel>Face Oil</ProductLabel>
             </ButtonWrapper>
             <ButtonWrapper>
-                <Image src={'perfume.jpeg'} onClick={onClick}/>
+                <Image src={'perfume.jpeg'} onClick={() => {
+                    setCurrentProduct('perfume');
+                }}/>
                 <ProductLabel>Perfume</ProductLabel>
             </ButtonWrapper>
             <ButtonWrapper></ButtonWrapper>
@@ -91,4 +107,4 @@ export const ProductGrid = () => {
     )
 }
 
-export default ProductGrid
+ProductGrid.displayName = 'ProductGrid';
