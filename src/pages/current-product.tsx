@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useContext } from 'react';
+import { ProductContext } from '../context/product-provider';
 import styled from 'styled-components';
-import { currentProductSelector } from '../redux/selectors';
 
 const Image = styled.img`
     height: 150px;
@@ -28,15 +27,16 @@ const ColorBubblesWrapper = styled.div`
 const ColorBubble = styled.div`
     height: 25px;
     border-radius: 50%;
-    background-color: ${props => props.color};
+    background-color: ${(props: { color: string; }) => props.color};
 `
 
 export const DefenseBundle = () => {
+    const { product } = useContext(ProductContext);
     const [selectedColor, setSelectedColor] = useState('White');
-    const currentProduct = useSelector(currentProductSelector);
+
     return(
         <>
-            <Image src={`${currentProduct}`} alt={currentProduct} />
+            <Image src={`${product.currentProduct}`} alt={product.currentProduct} />
             <div>
                 <ProductName>Face Cream - {selectedColor}</ProductName>
                 <Description> Face Cream </Description>
