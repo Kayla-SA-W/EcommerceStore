@@ -1,17 +1,4 @@
-import React from 'react';
-import { Provider } from "react-redux"
-import {store as createStore} from "./src/redux"
+import React from "react"
+import { ContextProviders } from './src/context'
 
-const App = ({ element }) => {
-    const store = createStore();
-    return (
-        <Provider store={store}>
-            {element}
-        </Provider>
-    )
-};
-
-export const wrapRootElement = ({ element }) => <App element={element} />;
-
-
-
+export default ({ element }) => (<ContextProviders>{element}</ContextProviders>);
